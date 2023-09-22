@@ -1,75 +1,107 @@
 <html>
-<body>
-<apex:page >
-    <style type='text/css'>
-    .embeddedServiceHelpButton .helpButton .uiButton {
-    background-color: #005290;
-    font-family: "Arial", sans-serif;
-    }
-    .embeddedServiceHelpButton .helpButton .uiButton:focus {
-    outline: 1px solid #005290;
-    }
-//Hide the Name field from End User
-   .embeddedServiceSidebarFormField.inputSplitName {
-    display: none !important;
-}
-    </style> 
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-    <script type='text/javascript'>
-        var initESW = function(gslbBaseURL) {
-            embedded_svc.settings.displayHelpButton = true; //Or false
-            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'         
-            //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-            //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)          
-            //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)         
-            // Settings for Chat
-            //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-            // Returns a valid button ID.
-            //};
-            //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-            //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-            //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)            
-            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-            embedded_svc.settings.entryFeature = 'LiveAgent';          
-            // Populate the value automatically in the pre-chat form
-            embedded_svc.settings.prepopulatedPrechatFields = {        
-            FirstName : "Test",
-            LastName : "Test",
-            SuppliedName : "Test",
-            Email : "TestData482@gmail.com",
-            SuppliedEmail : "TestData482@gmail.com",
-            Subject: "Need Assistance Immediately"            
+  <body>
+    <apex:page>
+      <style type="text/css">
+        .embeddedServiceHelpButton .helpButton .uiButton {
+          background-color: #005290;
+          font-family: "Arial", sans-serif;
+        }
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+          outline: 1px solid #005290;
+        }
+        /* //Hide the Name field from End User */
+        .embeddedServiceSidebarFormField.inputSplitName {
+          display: none !important;
+        }
+      </style>
+      <script
+        type="text/javascript"
+        src="https://service.force.com/embeddedservice/5.0/esw.min.js"
+      ></script>
+      <script type="text/javascript">
+        const searchParams = new URLSearchParams(window.location.href);
+        var firstName = searchParams.get("firstName");
+        var lastName = searchParams.get("lastName");
+        var email = searchParams.get("email");
+        var nationalId = searchParams.get("nationalId");
+        var buttonId = searchParams.get("buttonId");
+
+        var initESW = function (gslbBaseURL) {
+          embedded_svc.settings.displayHelpButton = true; //Or false
+          embedded_svc.snippetSettingsFile.autoOpenPostChat = true;
+          embedded_svc.settings.language = "es"; //For example, enter 'en' or 'en-US'
+          //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+          //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+          //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+          //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+          // Settings for Chat
+          //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+          // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+          // Returns a valid button ID.
+          //};
+          //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+          embedded_svc.snippetSettingsFile.fallbackRouting = [
+            nationalId,
+            buttonId,
+          ]; //An array of button IDs, user IDs, or userId_buttonId
+          //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+          embedded_svc.settings.enabledFeatures = ["LiveAgent"];
+          embedded_svc.settings.entryFeature = "LiveAgent";
+          // Populate the value automatically in the pre-chat form
+          embedded_svc.settings.prepopulatedPrechatFields = {
+            FirstName: "Test",
+            LastName: "Test",
+            SuppliedName: "Test",
+            Email: "TestData482@gmail.com",
+            SuppliedEmail: "TestData482@gmail.com",
+            Subject: "Need Assistance Immediately",
+          };
+          embedded_svc.snippetSettingsFile.fallbackRouting = [
+            nationalId,
+            buttonId,
+          ];
+          embedded_svc.snippetSettingsFile.extraPrechatFormDetails = [
+            { label: "FirstName", value: firstName, displayToAgent: true },
+            { label: "LastName", value: lastName, displayToAgent: true },
+            {
+              label: "Email",
+              value: email,
+              displayToAgent: true,
+            },
+          ];
+          embedded_svc.init(
+            "https://cunning-goat-kaby9g-dev-ed.trailblaze.my.salesforce.com",
+            "https://cunning-goat-kaby9g-dev-ed.trailblaze.my.site.com/",
+            gslbBaseURL,
+            "00D2w00000KLQDs",
+            "Chat_With_Customer",
+            {
+              baseLiveAgentContentURL:
+                "https://c.la2-c2-hnd.salesforceliveagent.com/content",
+              deploymentId: "5722w000000UhUN",
+              buttonId: "5732w000000UkNk",
+              baseLiveAgentURL:
+                "https://d.la2-c2-hnd.salesforceliveagent.com/chat",
+              eswLiveAgentDevName: "Chat_With_Customer",
+              isOfflineSupportEnabled: true,
+            }
+          );
         };
-            embedded_svc.init(
-                'https://cunning-goat-kaby9g-dev-ed.trailblaze.my.salesforce.com',
-                'https://cunning-goat-kaby9g-dev-ed.trailblaze.my.site.com/',
-                gslbBaseURL,
-                '00D2w00000KLQDs',
-                'Chat_With_Customer',
-                {
-                    baseLiveAgentContentURL: 'https://c.la2-c2-hnd.salesforceliveagent.com/content',
-                    deploymentId: '5722w000000UhUN',
-                    buttonId: '5732w000000UkNk',
-                    baseLiveAgentURL: 'https://d.la2-c2-hnd.salesforceliveagent.com/chat',
-                    eswLiveAgentDevName: 'Chat_With_Customer',
-                    isOfflineSupportEnabled: true
-                }
-            );
-        };
-    
-    if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://cunning-goat-kaby9g-dev-ed.trailblaze.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
+
+        if (!window.embedded_svc) {
+          var s = document.createElement("script");
+          s.setAttribute(
+            "src",
+            "https://cunning-goat-kaby9g-dev-ed.trailblaze.my.salesforce.com/embeddedservice/5.0/esw.min.js"
+          );
+          s.onload = function () {
             initESW(null);
-        };
-        document.body.appendChild(s);
-    } else {
-        initESW('https://service.force.com');
-    }
-    </script>
-</apex:page>
-</body>
+          };
+          document.body.appendChild(s);
+        } else {
+          initESW("https://service.force.com");
+        }
+      </script>
+    </apex:page>
+  </body>
 </html>
