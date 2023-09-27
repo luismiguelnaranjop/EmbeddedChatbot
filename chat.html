@@ -82,7 +82,9 @@
     }
 
     window.addEventListener("load", (event) => {
-      document.getElementsByClassName("helpButtonEnabled")[0].click();
+      setTimeout(() => {
+        document.getElementsByClassName("helpButtonEnabled")[0].click();
+      });
     });
   </script>
   <style type="text/css">
