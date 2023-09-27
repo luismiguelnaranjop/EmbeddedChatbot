@@ -101,22 +101,16 @@
           format("truetype");
     }
     .embeddedServiceSidebar.layout-docked .dockableContainer {
-      width: 100% !important; /*modified*/
-      max-height: 100%;
-      border-radius: 8px 8px 0 0;
-      font-size: 50px !important;
-    }
-
-    .embeddedServiceSidebar.layout-docked .dockableContainer {
       position: fixed;
       left: 0 !important; /*modified*/
-      bottom: 0;
+      bottom: 30px; /*modified*/
       right: 0 !important; /*modified*/
       margin: 0;
       height: 100% !important; /*modified*/
-      width: var(--lwc-sidebarWidth, 320px);
       max-height: 100% !important;
       border-radius: 8px 8px 0 0;
+      width: 100% !important; /*modified*/
+      font-size: 50px !important;
     }
 
     .embeddedServiceSidebar.layout-docked .dockableContainer,
@@ -147,6 +141,7 @@
       direction: inherit;
       height: 100px !important; /*modified*/
       min-height: 50px;
+      display: none !important;
     }
 
     button[embeddedService-chatHeader_chatHeader] {
@@ -216,6 +211,14 @@
       border: none;
       float: left;
       margin: 0 14px 14px 0;
+    }
+
+    .embeddedServiceLiveAgentStateChatInputFooter .chasitorControls {
+      position: relative;
+      height: calc(100% - 16px);
+      margin: 8px;
+      border-radius: 4px;
+      display: inherit !important; /*delete*/
     }
   </style>
 </html>
