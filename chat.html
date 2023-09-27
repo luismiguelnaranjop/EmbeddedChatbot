@@ -1,137 +1,4 @@
 <html>
-  <!-- <style type='text/css'>
-        .embeddedServiceHelpButton .helpButton .uiButton {
-        background-color: #005290;
-        font-family: "Salesforce Sans", sans-serif;
-        }
-        .embeddedServiceHelpButton .helpButton .uiButton:focus {
-        outline: 1px solid #005290;
-        }
-        @font-face {
-        font-family: 'Salesforce Sans';
-        src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-        url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
-        }
-        
-        .embeddedServiceSidebar.layout-docked .dockableContainer {
-        width: 100% !important; /*modified*/
-        max-height: 100%;
-        border-radius: 8px 8px 0 0;
-        font-size: 50px !important;
-        }
-        
-        .embeddedServiceSidebar.layout-docked .dockableContainer {
-        position: fixed;
-        left: 0 !important; /*modified*/
-        bottom: 0;
-        right: 0 !important; /*modified*/
-        margin: 0;
-        height: 100% !important; /*modified*/
-        width: var(--lwc-sidebarWidth, 320px);
-        max-height: 100% !important;
-        border-radius: 8px 8px 0 0;
-        }
-        
-        .embeddedServiceSidebar.layout-docked .dockableContainer,
-        .embeddedServiceSidebar.layout-float .dockableContainer {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        max-width: 100% !important;
-        height: 100% !important;
-        margin: 12px auto;
-        left: 0;
-        right: 0;
-        box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        z-index: 15;
-        text-align: center;
-        overflow: hidden;
-        pointer-events: all;
-        position: relative;
-        }
-        
-        /* element.style { */
-        /*role=dialog*/
-        /* font-size: 50px; */
-        /* } */
-        
-        [embeddedService-chatHeader_chatHeader-host] {
-        direction: inherit;
-        height: 100px !important; /*modified*/
-        min-height: 50px;
-        }
-        
-        button[embeddedService-chatHeader_chatHeader] {
-        background: none;
-        border: none;
-        height: 32px;
-        min-height: 32px;
-        width: 60px !important; /*modified*/
-        min-width: 32px;
-        }
-        
-        .embeddedServiceLiveAgentStateChatInputFooter.dynamicResizeTextOneRow {
-        height: 100px !important;
-        min-height: 100px !important; /*delete*/
-        }
-        
-        .embeddedServiceLiveAgentStateChatMenuMessage .rich-menu-item,
-        .embeddedServiceLiveAgentStateChatMenuMessage .rich-menu-itemOptionIsClicked {
-        text-align: center;
-        font-size: 50px !important; /*modified*/
-        padding: 12px 5px;
-        display: block;
-        width: inherit;
-        margin: 0;
-        }
-        
-        .embeddedServiceLiveAgentStateChatMenuMessage .rich-menu {
-        border-radius: 3px;
-        margin: auto;
-        width: 80% !important; /*modified*/
-        background-color: var(--slds-g-color-neutral-base-100, #ffffff);
-        }
-        
-        .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI.agent.plaintextContent {
-        color: var(--lwc-colorTextDefault, #333333);
-        background: var(--slds-g-color-neutral-base-95, #f4f4f4);
-        border-radius: 10px 10px 10px 0;
-        float: left;
-        margin-left: 90px !important; /*added*/
-        }
-        
-        .embeddedServiceLiveAgentStateChatItem .nameAndTimeContent {
-        font-weight: var(--lwc-fontWeightRegular, 400);
-        line-height: 1.3;
-        font-size: var(--lwc-esFontSizeXSmall, 0.625em);
-        color: var(--slds-g-color-neutral-base-50, #666);
-        padding-top: 2px;
-        clear: both;
-        margin-left: 60px !important; /*added*/
-        }
-        
-        .embeddedServiceLiveAgentStateChat .endChatContainer .endChatButton {
-        width: calc(100% - 48px);
-        height: 100px !important; /*modified*/
-        line-height: 50px;
-        margin: 0 24px;
-        }
-        
-        .embeddedServiceLiveAgentStateChatItem .isLightningOutContext .avatar {
-        position: absolute;
-        bottom: 0;
-        width: 75px !important;
-        height: 75px !important;
-        border-radius: 50px;
-        background-size: cover;
-        border: none;
-        float: left;
-        margin: 0 14px 14px 0;
-        }
-        
-    </style> -->
-
   <script
     type="text/javascript"
     src="https://service.force.com/embeddedservice/5.0/esw.min.js"
@@ -145,7 +12,6 @@
     var buttonId = searchParams.get("buttonId");
 
     var initESW = function (gslbBaseURL) {
-      embedded_svc.settings.widgetFontSize = "200px";
       embedded_svc.settings.displayHelpButton = true; //Or false
       embedded_svc.snippetSettingsFile.autoOpenPostChat = true;
       embedded_svc.settings.language = "es"; //For example, enter 'en' or 'en-US'
@@ -219,4 +85,137 @@
       document.getElementsByClassName("helpButtonEnabled")[0].click();
     });
   </script>
+  <style type="text/css">
+    .embeddedServiceHelpButton .helpButton .uiButton {
+      background-color: #005290;
+      font-family: "Salesforce Sans", sans-serif;
+    }
+    .embeddedServiceHelpButton .helpButton .uiButton:focus {
+      outline: 1px solid #005290;
+    }
+    @font-face {
+      font-family: "Salesforce Sans";
+      src: url("https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff")
+          format("woff"),
+        url("https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf")
+          format("truetype");
+    }
+    .embeddedServiceSidebar.layout-docked .dockableContainer {
+      width: 100% !important; /*modified*/
+      max-height: 100%;
+      border-radius: 8px 8px 0 0;
+      font-size: 50px !important;
+    }
+
+    .embeddedServiceSidebar.layout-docked .dockableContainer {
+      position: fixed;
+      left: 0 !important; /*modified*/
+      bottom: 0;
+      right: 0 !important; /*modified*/
+      margin: 0;
+      height: 100% !important; /*modified*/
+      width: var(--lwc-sidebarWidth, 320px);
+      max-height: 100% !important;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .embeddedServiceSidebar.layout-docked .dockableContainer,
+    .embeddedServiceSidebar.layout-float .dockableContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      max-width: 100% !important;
+      height: 100% !important;
+      margin: 12px auto;
+      left: 0;
+      right: 0;
+      box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      z-index: 15;
+      text-align: center;
+      overflow: hidden;
+      pointer-events: all;
+      position: relative;
+    }
+
+    /* element.style { */
+    /*role=dialog*/
+    /* font-size: 50px; */
+    /* } */
+
+    [embeddedService-chatHeader_chatHeader-host] {
+      direction: inherit;
+      height: 100px !important; /*modified*/
+      min-height: 50px;
+    }
+
+    button[embeddedService-chatHeader_chatHeader] {
+      background: none;
+      border: none;
+      height: 32px;
+      min-height: 32px;
+      width: 60px !important; /*modified*/
+      min-width: 32px;
+    }
+
+    .embeddedServiceLiveAgentStateChatInputFooter.dynamicResizeTextOneRow {
+      height: 100px !important;
+      min-height: 100px !important; /*delete*/
+    }
+
+    .embeddedServiceLiveAgentStateChatMenuMessage .rich-menu-item,
+    .embeddedServiceLiveAgentStateChatMenuMessage
+      .rich-menu-itemOptionIsClicked {
+      text-align: center;
+      font-size: 50px !important; /*modified*/
+      padding: 12px 5px;
+      display: block;
+      width: inherit;
+      margin: 0;
+    }
+
+    .embeddedServiceLiveAgentStateChatMenuMessage .rich-menu {
+      border-radius: 3px;
+      margin: auto;
+      width: 80% !important; /*modified*/
+      background-color: var(--slds-g-color-neutral-base-100, #ffffff);
+    }
+
+    .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI.agent.plaintextContent {
+      color: var(--lwc-colorTextDefault, #333333);
+      background: var(--slds-g-color-neutral-base-95, #f4f4f4);
+      border-radius: 10px 10px 10px 0;
+      float: left;
+      margin-left: 90px !important; /*added*/
+    }
+
+    .embeddedServiceLiveAgentStateChatItem .nameAndTimeContent {
+      font-weight: var(--lwc-fontWeightRegular, 400);
+      line-height: 1.3;
+      font-size: var(--lwc-esFontSizeXSmall, 0.625em);
+      color: var(--slds-g-color-neutral-base-50, #666);
+      padding-top: 2px;
+      clear: both;
+      margin-left: 60px !important; /*added*/
+    }
+
+    .embeddedServiceLiveAgentStateChat .endChatContainer .endChatButton {
+      width: calc(100% - 48px);
+      height: 100px !important; /*modified*/
+      line-height: 50px;
+      margin: 0 24px;
+    }
+
+    .embeddedServiceLiveAgentStateChatItem .isLightningOutContext .avatar {
+      position: absolute;
+      bottom: 0;
+      width: 75px !important;
+      height: 75px !important;
+      border-radius: 50px;
+      background-size: cover;
+      border: none;
+      float: left;
+      margin: 0 14px 14px 0;
+    }
+  </style>
 </html>
